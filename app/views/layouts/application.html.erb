@@ -9,9 +9,25 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <header>
-      <%= render 'layouts/alerts' %>
-    </header>
-    <%= yield %>
-  </body>
+    <% unless user_signed_in? %>
+      <section class='min-vw-100 min-vh-100 d-flex flex-column  align-items-center justify-content-center container' style='background-color: #100F0F; color: #F1F1F1'>
+        <header>
+          <%= render 'layouts/alerts' %>
+        </header>
+        <div class='row border border-5 rounded p-5' style='border-color: #E2DCC8'>
+          <div class='col-lg-6'>
+            <%= image_tag 'exchange-rate.png'%>
+          </div>
+          <div class='col-lg-6'>
+            <%= yield %>
+          </div>
+        </div>
+      </section>
+    <% else %>
+      <header>
+        <%= render 'layouts/alerts' %>
+      </header>
+      <%= yield %>
+    </body>
+  <% end %>
 </html>
