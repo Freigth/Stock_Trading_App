@@ -19,6 +19,7 @@ gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'devise-bootstrap-views'
+gem "font-awesome-sass"
 
 
 group :development, :test do
@@ -35,3 +36,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "jsbundling-rails", "~> 1.0"
