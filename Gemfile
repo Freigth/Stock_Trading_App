@@ -16,6 +16,9 @@ gem 'cancancan'
 gem 'pry'
 gem 'iex-ruby-client'
 gem 'devise'
+gem 'bootstrap'
+gem 'jquery-rails'
+gem 'devise-bootstrap-views'
 
 
 group :development, :test do
