@@ -1,0 +1,24 @@
+class StocksController < ApplicationController
+  before_action :get_iex
+
+  def index
+    search = params[:query]
+    @most_active ||= @client.stock_market_list(:mostactive)
+    if search.present? && search.match(/[a-zA-Z]/)
+      search = search.upcase
+      begin
+        quote = @client.quote(search)
+      rescue StandardError
+        respond_to do |format|
+          format.html { redirect_to stocks_path, alert: 'Symbol not found' }
+        end
+      else
+        @stock = quote
+      end
+    end
+  end
+
+  def get_iex
+    @client = Client.call_iex
+  end
+end

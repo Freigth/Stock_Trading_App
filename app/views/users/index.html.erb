@@ -1,0 +1,52 @@
+<h2 style='color: #607EAA'>Welcome <%= current_user.email.split("@")[0] %>!</h2>
+<p>Total Users Registered: <%= User.count - 1  %></p>
+<div class='mt-5'>
+  <h6>Pending users for approval</h6>
+  <% if @users_not_approved.length == 0  %>
+    <h6 class='text-success'>All users are approved</h6>
+  <% else %>
+    <table class="table table-sm table-hover">
+      <thead class="bg-dark text-light">
+        <tr>
+          <th>#</th>
+          <th>Email</th>
+          <th>Approval Status</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users_not_approved.each do |user| %>
+          <tr class='table-info'>
+            <th scope="row"><%= user.id %></th>
+            <td><%= user.email %></td>
+            <td><%= user.approved %></td>
+            <td><%= link_to "view details", user_path(user) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+<div class='mt-5'>
+  <h6>All approved users</h6>
+  <table class="table table-sm table-hover">
+    <thead class="bg-dark text-light">
+      <tr>
+        <th>#</th>
+        <th>Email</th>
+        <th>Balance</th>
+        <th>Transaction History</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users_approved.each do |user| %>
+        <tr class='table-success'>
+          <th scope="row"><%= user.id %></th>
+          <td><%= user.email %></td>
+          <td><%= user.balance %></td>
+          <td><%= link_to "view history", user_path(user) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

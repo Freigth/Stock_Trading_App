@@ -1,0 +1,70 @@
+<% unless @user.approved? %>
+  <div>
+    <h6>User Profile</h6>
+    <table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Email</th>
+          <th>Change Approval Status</th>
+          <th>Date Created</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= @user.id %></th>
+          <td><%= @user.email%></td>
+          <td><%= link_to 'edit', edit_user_path(@user) %></td>
+          <td><%= @user.created_at %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<% if @user.approved? %>
+  <h6 class='mb-4'> <span class='text-primary'><%= @user.email %>'s</span> transaction history</h6>
+  <% unless @user_history.present? %>
+    <h6 class='text-warning'>No Transactions yet</h6>
+  <% else %>
+    <table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Transaction Type</th>
+          <th>Stock Symbol</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user_history.each do |t| %>
+          <% if t.status == 'withdraw' || t.status == 'sell' %>
+            <tr class='table-warning'>
+              <th scope="row"><%= t.id %></th>
+              <td><%= t.status %></td>
+              <% unless t.symbol.nil? %>
+                <td><%= t.symbol %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+              <td>$<%= t.amount %></td>
+              <td><%= t.created_at %></td>
+            </tr>
+          <% elsif t.status == 'deposit' || t.status == 'buy' %>
+            <tr class='table-success'>
+              <th scope="row"><%= t.id %></th>
+              <td><%= t.status %></td>
+              <% unless t.symbol.nil? %>
+                <td><%= t.symbol %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+              <td>$<%= t.amount %></td>
+              <td><%= t.created_at %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>

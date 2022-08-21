@@ -1,0 +1,11 @@
+<div>
+  <h6 class='mb-3'>You're changing <span class='text-primary'> <%= @user.email %>'s </span> status </h6>
+  <%= form_with model: @user do |form| %>
+    <%= form.hidden_field :email %>
+    <div class="w-100">
+      <span>Approval's Status</span>
+      <%= form.select :approved, [[true, "true"], [false, "false"]]%>
+    </div>
+    <%= form.submit class: "btn btn-success mt-2"%>
+  <% end %>
+</div>

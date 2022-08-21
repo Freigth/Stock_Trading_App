@@ -16,10 +16,10 @@ gem 'cancancan'
 gem 'pry'
 gem 'iex-ruby-client'
 gem 'devise'
-gem 'bootstrap'
-gem 'jquery-rails'
+gem 'bootstrap', '~> 5.2.0'
 gem 'devise-bootstrap-views'
 gem "font-awesome-sass"
+gem 'jquery-rails'
 
 
 group :development, :test do

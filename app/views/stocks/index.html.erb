@@ -1,0 +1,74 @@
+<div class="container d-flex justify-content-start my-4">
+  <%= form_with url: '/stocks',class: "d-flex w-100", method: :get, data: {turbo: false} do |form| %>
+    <%= form.text_field :query, placeholder: "Search stocks by Symbol", class: "form-control form-control-dark" %>
+    <%= form.submit "Search", class:"btn btn-primary" %>
+  <% end %>
+</div>
+<div class="container">
+  <% if @stock.present? %>
+    <div class="d-style bgc-white btn btn-brc-tp btn-primary btn-outline-green btn-h-outline-green btn-a-outline-green w-100 my-2 py-3 shadow-sm border-2">
+      <!-- Pro Plan -->
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4">
+          <h4 class="pt-3 text-170 text-600 text-green-d1 letter-spacing">
+            <%= @stock.symbol %>
+          </h4>
+          <div class="text-secondary-d2 text-120">
+            <div class="text-danger-m3 text-90 mr-1 ml-n4 pos-rel d-inline-block">
+              $<span class="text-150 deleted-text"><%= @stock.latest_price.floor %> / stock</span>
+              <span>
+                <span class="d-block rotate-45 position-l mt-n475 ml-35 fa-2x text-400 border-l-2 h-5 brc-dark-m1"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <ul class="list-unstyled mb-0 col-12 col-md-4 text-dark-l1 text-90 text-left my-4 my-md-0">
+          <li>
+            <i class="fa fa-building-o text-success-m2 text-110 mr-2 mt-1"></i>
+            <span>
+              <span class="text-110"><%= @stock.company_name %></span>
+            </span>
+          </li>
+        </ul>
+        <div class="col-12 col-md-4 text-center">
+          <%= link_to 'Buy Stocks', transactions_buy_path(SS: @stock.symbol), class:"f-n-hover btn btn-success btn-raised px-4 py-25 w-50 text-600" %>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4">
+  <% end %>
+</div>
+<div class="container">
+  <h5>MOST ACTIVE STOCKS</h5>
+  <% @most_active.each do |stock| %>
+    <div class="d-style bgc-white btn btn-brc-tp btn-outline-green btn-h-outline-green btn-a-outline-green w-100 my-2 py-3 shadow-sm border-2">
+      <!-- Pro Plan -->
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4">
+          <h4 class="pt-3 text-170 text-600 text-green-d1 letter-spacing">
+            <%= stock.symbol %>
+          </h4>
+          <div class="text-secondary-d2 text-120">
+            <div class="text-danger-m3 text-90 mr-1 ml-n4 pos-rel d-inline-block">
+              $<span class="text-150 deleted-text"><%= number_with_precision(stock.latest_price, precision: 2) %> / stock</span>
+              <span>
+                <span class="d-block rotate-45 position-l mt-n475 ml-35 fa-2x text-400 border-l-2 h-5 brc-dark-m1"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <ul class="list-unstyled mb-0 col-12 col-md-4 text-dark-l1 text-90 text-left my-4 my-md-0">
+          <li>
+            <i class="fa fa-building-o text-success-m2 text-110 mr-2 mt-1"></i>
+            <span>
+              <span class="text-110"><%= stock.company_name %></span>
+            </span>
+          </li>
+        </ul>
+        <div class="col-12 col-md-4 text-center">
+          <%= link_to 'Buy Stocks', transactions_buy_path(SS: stock.symbol), class:"f-n-hover btn btn-success btn-raised px-4 py-25 w-50 text-600" %>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</div>
