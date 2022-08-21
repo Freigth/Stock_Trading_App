@@ -13,8 +13,8 @@ Rails.application.configure do
     domain: 'secret-coast-88273.herokuapp.com',
     user_name: 'railsmailer69@gmail.com',
     password: 'onlyrails69',
-    authentication: 'plain',
-    enable_starttls_auto: true
+    authentication: 'plain'
+    # enable_starttls_auto: true
   }
 
   # Code is not reloaded between requests.
