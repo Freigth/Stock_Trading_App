@@ -53,7 +53,7 @@ Rails.application.configure do
     user_name: 'railsmailer69@gmail.com',
     password: 'onlyrails69',
     authentication: 'plain',
-    # enable_starttls_auto: true
+    enable_starttls_auto: true
   }
 
   # Raise exceptions for disallowed deprecations.

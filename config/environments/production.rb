@@ -13,7 +13,7 @@ Rails.application.configure do
     domain: 'gmail.com',
     user_name: 'railsmailer69@gmail.com',
     password: 'onlyrails69',
-    authentication: 'plain'
+    authentication: 'plain',
     enable_starttls_auto: true
   }
 
