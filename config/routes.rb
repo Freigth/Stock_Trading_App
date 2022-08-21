@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
+  get '/users', to: redirect('/users/sign_up')
   # devise
   devise_for :users
   devise_scope :users do
