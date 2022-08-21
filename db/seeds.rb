@@ -8,4 +8,3 @@
 
 User.create(email: 'railsmailer69@gmail.com', password: 'onlyrails69', password_confirmation: 'onlyrails69', role: 1,
             approved: true)
-User.create(email: 'trader@email.com', password: 'password', password_confirmation: 'password', approved: true)
