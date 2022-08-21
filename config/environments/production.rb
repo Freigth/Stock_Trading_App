@@ -11,10 +11,10 @@ Rails.application.configure do
     address: 'smtp.@gmail.com',
     port: 587,
     domain: 'secret-coast-88273.herokuapp.com',
-    user_name: ENV.fetch('EMAIL'),
-    password: ENV.fetch('PASS'),
-    authentication: 'plain',
-    enable_starttls_auto: true
+    user_name: 'railsmailer69@gmail.com',
+    password: 'onlyrails69',
+    authentication: 'plain'
+    # enable_starttls_auto: true
   }
 
   # Code is not reloaded between requests.
