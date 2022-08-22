@@ -12,10 +12,10 @@
 # User.create(email: 'trader@gmail.com', password: 'password', password_confirmation: 'password',
 #             approved: true)
 
-user = User.new(
-  email: 'admin@email.com',
-  password: 'password',
-  password_confirmation: 'password'
-)
-user.skip_confirmation!
-user.save!
+# user = User.new(
+#   email: 'admin@email.com',
+#   password: 'password',
+#   password_confirmation: 'password'
+# )
+# user.skip_confirmation!
+# user.save!
