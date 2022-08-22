@@ -11,8 +11,8 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'dry-scrubland-70802.herokuapp.com',
-    user_name: Rails.application.credentials.dig(:gmail_smtp, :email),
-    password: Rails.application.credentials.dig(:gmail_smtp, :password),
+    user_name: 'railsmailer69@gmail.com',
+    password: 'blckohuuyuddxxez',
     authentication: 'plain',
     enable_starttls_auto: true
   }
