@@ -47,13 +47,8 @@ Rails.application.configure do
   # !
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'secret-coast-88273.herokuapp.com',
-    user_name: ENV.fetch("EMAIL"),
-    password: ENV.fetch("PASS"),
-    authentication: 'plain',
-    enable_starttls_auto: true
+    address: '127.0.0.1:1025',
+    port: 1025,
   }
 
   # Raise exceptions for disallowed deprecations.

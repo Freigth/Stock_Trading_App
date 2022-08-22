@@ -11,8 +11,8 @@ Rails.application.configure do
     address: 'smtp.@gmail.com',
     port: 587,
     domain: 'secret-coast-88273.herokuapp.com',
-    user_name: ENV.fetch('EMAIL'),
-    password: ENV.fetch('PASS'),
+    user_name: Rails.application.credentials.dig(:gmail_smtp, :email),
+    password: Rails.application.credentials.dig(:gmail_smtp, :password),
     authentication: 'plain',
     enable_starttls_auto: true
   }
