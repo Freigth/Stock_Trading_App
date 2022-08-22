@@ -4,6 +4,6 @@ class AdminMailer < ApplicationMailer
 
   def new_user_waiting_for_approval(email)
     @email = email
-    mail(to: @admins, subject: 'New user awaiting admin approval') if @admins.any?
+    mail(to: @admins, subject: 'New user awaiting admin approval') if @admins.present?
   end
 end
