@@ -45,10 +45,18 @@ Rails.application.configure do
   config.active_support.deprecation = :log
 
   # !
+  config.action_mailer.default_url_options = { host: 'dry-scrubland-70802.herokuapp.com' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: '127.0.0.1:1025',
-    port: 1025,
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'dry-scrubland-70802.herokuapp.com',
+    user_name: Rails.application.credentials.dig(:gmail_smtp, :email),
+    password: Rails.application.credentials.dig(:gmail_smtp, :password),
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
 
   # Raise exceptions for disallowed deprecations.
